@@ -1,3 +1,4 @@
+import pytest
 
 from django.test import TestCase
 from django.contrib.auth import get_user_model
@@ -29,3 +30,7 @@ class ModelTests(TestCase):
         for email, expected in sample_emails:
             user = get_user_model().objects.create_user(email, 'sample123')
             assert user.email == expected
+
+    def test_새로운_유저_생성시_이메일이_없으면_에러를_나타낼_것이다(self):
+        with pytest.raises(ValueError):
+            get_user_model().objects.create_user('','test123')
