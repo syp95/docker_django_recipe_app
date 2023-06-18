@@ -3,7 +3,7 @@ Test custom Django management commands.
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE","app.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.settings")
 
 import django
 django.setup()
