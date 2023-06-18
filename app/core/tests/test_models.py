@@ -32,4 +32,13 @@ class ModelTests(TestCase):
 
     def test_새로운_유저_생성시_이메일이_없으면_에러를_나타낼_것이다(self):
         with pytest.raises(ValueError):
-            get_user_model().objects.create_user('','test123')
+            get_user_model().objects.create_user('', 'test123')
+
+    def test_슈퍼유저가_생성될_것이다(self):
+        user = get_user_model().objects.create_superuser(
+            'test123.example.com',
+            'test123',
+        )
+
+        assert user.is_superuser == True
+        assert user.is_staff == True
